@@ -3,13 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <title>AI Creature Generator</title>
-    <link rel="stylesheet" href="style.css?v=15">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Ensures responsiveness -->
+    <link rel="stylesheet" href="style.css?v=30"> <!-- Link to your CSS file -->
 </head>
 <body>
-    <div class="container">
+    <!-- iOS Navigation Bar (for mobile aesthetics) -->
+    <div class="ios-navbar">
         <h1>AI Creature Generator</h1>
+    </div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Prompt Form -->
         <form id="prompt-form">
-            <p class="prompt-text" contenteditable="true">
+            <p class="prompt-text">
                 A cute
                 <select id="animal-select"></select>
                 against a solid fill background. Its body is
@@ -18,22 +25,30 @@
                 <select id="personality-select"></select>
                 personality.
             </p>
-            <button type="submit" id="generate-button">Generate creature!</button>
+            <button type="submit" id="generate-button">Generate Creature!</button>
         </form>
+
+        <!-- Image Container -->
         <div class="image-container">
+            <!-- Main Image Display -->
             <div class="main-image">
-                <div id="loader" class="loader" style="display: none;"></div>
-                <img id="generated-image" src="" alt="Generated Image">
+                <div id="loader" class="loader" style="display: none;"></div> <!-- Loader shown during image generation -->
+                <img id="generated-image" alt="Generated Creature Image" data-from-history="false"> <!-- Generated image -->
             </div>
+
+            <!-- History Thumbnails -->
             <div class="history-images">
-                <!-- Thumbnails will be added here -->
+                <!-- Placeholder thumbnails for initial state -->
                 <div class="thumbnail placeholder"></div>
                 <div class="thumbnail placeholder"></div>
                 <div class="thumbnail placeholder"></div>
                 <div class="thumbnail placeholder"></div>
             </div>
         </div>
+
     </div>
-    <script src="script.js?v=12"></script>
+
+    <!-- Link to your JavaScript file -->
+    <script src="script.js?v=32"></script>
 </body>
 </html>

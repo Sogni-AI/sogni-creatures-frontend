@@ -12,24 +12,23 @@ body {
     color: #333;
     min-height: 100vh;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
+    flex-direction: column; /* Stack content vertically */
+    padding: 0; /* Remove default padding */
 }
 
 /* Container styles */
 .container {
+    flex: 1; /* Allow container to grow and fill available space */
     max-width: 750px;
+    width: 100%; /* Ensure full width */
     margin: 0 auto;
     padding: 30px;
     background: #ffffff;
     border-radius: 20px;
     box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.3s;
-}
-
-.container:hover {
-    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.12);
+    display: flex; /* Enable flex layout */
+    flex-direction: column; /* Stack child elements vertically */
 }
 
 /* Header styles */
@@ -109,16 +108,20 @@ button:disabled {
 
 /* Image container styles */
 .image-container {
+    flex: 1; /* Allow image container to grow and fill space */
     display: flex;
     justify-content: center;
+    align-items: center; /* Center content vertically */
     gap: 20px;
+    margin-bottom: 20px; /* Add spacing at the bottom */
 }
 
 .main-image {
     position: relative;
-    width: 500px;
+    width: 100%;
+    max-width: 500px;
     height: 500px;
-    background: linear-gradient(to bottom, #f4f4f5, #e8eaec);
+    background: #e5e5ea; /* Placeholder background color */
     border-radius: 20px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     display: flex;
@@ -134,6 +137,12 @@ button:disabled {
     display: none; /* Hide image by default */
 }
 
+/* Show image when it has a valid source */
+.main-image img[src]:not([src=""]) {
+    display: block;
+}
+
+/* Loader styles */
 .loader {
     border: 8px solid #f3f3f3;
     border-top: 8px solid #007aff;
@@ -179,6 +188,7 @@ button:disabled {
     margin-bottom: 12px;
     cursor: pointer;
     transition: transform 0.2s, box-shadow 0.2s;
+    object-fit: cover; /* Ensure images cover the thumbnail area */
 }
 
 .thumbnail:hover {
@@ -190,24 +200,56 @@ button:disabled {
     background-color: #e5e5ea;
 }
 
+/* Clear History Button Styles */
+#clear-history-button {
+    margin-top: 10px;
+    padding: 8px 16px;
+    background-color: #ff3b30;
+    color: #ffffff;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+#clear-history-button:hover {
+    background-color: #e02d24;
+}
+
 /* Responsive styles */
 @media (max-width: 600px) {
+    .container {
+        padding: 20px;
+        border-radius: 0;
+        box-shadow: none;
+        max-width: none;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
     .prompt-text {
         font-size: 1em;
     }
 
     button {
         width: 100%;
+        border-radius: 0;
     }
 
     .main-image {
-        width: 100%;
         height: auto;
+        aspect-ratio: 1; /* Maintain square aspect ratio */
+        border-radius: 0;
+        border: none;
+        box-shadow: none;
     }
 
     .image-container {
         flex-direction: column;
         align-items: center;
+        gap: 10px;
     }
 
     .history-images {
@@ -215,10 +257,72 @@ button:disabled {
         max-height: none;
         overflow-y: visible;
         gap: 12px;
+        width: 100%;
+        justify-content: center;
     }
 
     .thumbnail, .placeholder {
         width: 70px;
         height: 70px;
+        border-radius: 10px;
+    }
+
+    #prompt-form {
+        padding: 15px;
+        border-radius: 0;
+        box-shadow: none;
+        margin-bottom: 20px;
+    }
+
+    select {
+        font-size: 0.9em;
+        padding: 6px 10px;
+        border-radius: 8px;
+    }
+
+    .loader {
+        width: 40px;
+        height: 40px;
+        border-width: 6px;
+    }
+}
+
+/* iOS-specific styles */
+@media (max-width: 600px) and (orientation: portrait) {
+    body {
+        background-color: #f2f2f7;
+        padding-top: env(safe-area-inset-top);
+    }
+
+    /* Status bar padding */
+    .container {
+        padding-top: 20px;
+    }
+
+    /* iOS Navigation Bar */
+    .ios-navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 44px;
+        background-color: #fff;
+        border-bottom: 1px solid #ccc;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-top: env(safe-area-inset-top);
+        z-index: 1000;
+    }
+
+    .ios-navbar h1 {
+        font-size: 17px;
+        font-weight: 600;
+        margin: 0;
+    }
+
+    /* Adjust container to account for navbar */
+    .container {
+        margin-top: 44px;
     }
 }
