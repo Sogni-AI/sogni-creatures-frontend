@@ -1,0 +1,135 @@
+/* Reset styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #eef2f5;
+}
+
+/* Container styles */
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+/* Header styles */
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Prompt form styles */
+#prompt-form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.prompt-text {
+    font-size: 1.2em;
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+.prompt-text:focus {
+    outline: none;
+}
+
+select {
+    font-size: 1em;
+    padding: 5px;
+    margin: 0 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+button {
+    display: block;
+    padding: 10px 20px;
+    font-size: 1em;
+    margin: 0 auto;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Image container styles */
+.image-container {
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#generated-image {
+    max-width: 100%;
+    max-height: 500px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.history {
+    margin-top: 20px;
+    width: 100%;
+}
+
+.history h2 {
+    margin-bottom: 10px;
+    text-align: center;
+    color: #333;
+}
+
+#history-images {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+#history-images img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+#history-images img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive styles */
+@media (max-width: 600px) {
+    .prompt-text {
+        font-size: 1em;
+    }
+
+    button {
+        width: 100%;
+    }
+
+    #generated-image {
+        max-height: 300px;
+    }
+
+    #history-images img {
+        width: 80px;
+        height: 80px;
+    }
+}

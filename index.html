@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>AI Creature Generator</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="container">
+            <h1>AI Creature Generator</h1>
+            <form id="prompt-form">
+                <p class="prompt-text" contenteditable="true">
+                    A cute
+                    <select id="animal-select"></select>
+                    against a solid fill background. Its body is
+                    <select id="color-select"></select>
+                    -colored, with an expression and stance conveying a
+                    <select id="personality-select"></select>
+                    personality.
+                </p>
+                <button type="submit">Generate Image</button>
+            </form>
+            <div class="image-container">
+                <img id="generated-image" src="" alt="Generated Image">
+                <div class="history">
+                    <h2>History</h2>
+                    <div id="history-images"></div>
+                </div>
+            </div>
+        </div>
+        <script src="script.js?v=1"></script>
+    </body>
+</html>
