@@ -63,7 +63,12 @@ button {
     cursor: pointer;
 }
 
-button:hover {
+button:disabled {
+    cursor: not-allowed;
+    background-color: #6c757d;
+}
+
+button:hover:enabled {
     background-color: #0056b3;
 }
 
@@ -71,33 +76,37 @@ button:hover {
 .image-container {
     margin-top: 30px;
     display: flex;
+    justify-content: center;
 }
 
 .main-image {
     position: relative;
     width: 500px;
+    height: 500px;
     margin-right: 20px;
+    background-color: #f0f0f0; /* Default background color */
+    overflow: hidden;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .main-image img {
-    width: 100%;
     max-width: 100%;
-    max-height: 500px;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-height: 100%;
+    display: none; /* Hide image by default */
 }
 
 .loader {
     border: 16px solid #f3f3f3; /* Light grey */
     border-top: 16px solid #007BFF; /* Blue */
     border-radius: 50%;
-    width: 120px;
-    height: 120px;
+    width: 80px;
+    height: 80px;
     animation: spin 2s linear infinite;
+    /* Center the loader */
     position: absolute;
-    top: 50%;
-    left: 50%;
-    margin: -60px 0 0 -60px; /* Adjust to center the loader */
 }
 
 @keyframes spin {
@@ -108,22 +117,49 @@ button:hover {
 .history-images {
     display: flex;
     flex-direction: column;
+    max-height: 500px; /* Match main image height */
+    overflow-y: auto;
+    scrollbar-width: none; /* Hide scrollbar in Firefox */
 }
 
-.history-images img {
+.history-images::-webkit-scrollbar {
+    display: none; /* Hide scrollbar in Chrome, Safari, and Opera */
+}
+
+.thumbnail {
     width: 100px;
     height: 100px;
     object-fit: cover;
-    margin-bottom: 10px;
     border-radius: 5px;
     cursor: pointer;
     transition: transform 0.2s;
+    margin-bottom: 10px;
+    flex-shrink: 0;
 }
 
-.history-images img:hover {
+.thumbnail:last-child {
+    margin-bottom: 0;
+}
+
+.thumbnail:hover {
     transform: scale(1.05);
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
+
+/* Placeholder thumbnails */
+.placeholder {
+    width: 100px;
+    height: 100px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    flex-shrink: 0;
+}
+
+.placeholder:last-child {
+    margin-bottom: 0;
+}
+
+/* Removed placeholder text */
 
 /* Responsive styles */
 @media (max-width: 600px) {
@@ -138,6 +174,7 @@ button:hover {
     .main-image {
         width: 100%;
         margin-right: 0;
+        height: auto;
     }
 
     .image-container {
@@ -147,10 +184,16 @@ button:hover {
 
     .history-images {
         flex-direction: row;
+        width: 100%;
         justify-content: center;
+        margin-top: 20px;
+        max-height: none;
+        overflow-y: visible;
     }
 
-    .history-images img {
-        margin: 5px;
+    .thumbnail, .placeholder {
+        width: 80px;
+        height: 80px;
+        margin: 0 5px;
     }
 }

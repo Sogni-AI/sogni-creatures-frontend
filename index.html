@@ -1,35 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>AI Creature Generator</title>
-        <link rel="stylesheet" href="style.css?v=1">
-    </head>
-    <body>
-        <div class="container">
-            <h1>AI Creature Generator</h1>
-            <form id="prompt-form">
-                <p class="prompt-text" contenteditable="true">
-                    A cute
-                    <select id="animal-select"></select>
-                    against a solid fill background. Its body is
-                    <select id="color-select"></select>
-                    -colored, with an expression and stance conveying a
-                    <select id="personality-select"></select>
-                    personality.
-                </p>
-                <button type="submit">Generate creature!</button>
-            </form>
-            <div class="image-container">
-                <div class="main-image">
-                    <div id="loader" class="loader" style="display: none;"></div>
-                    <img id="generated-image" src="" alt="Generated Image">
-                </div>
-                <div class="history-images">
-                    <!-- Thumbnails will be added here -->
-                </div>
+<head>
+    <meta charset="UTF-8">
+    <title>AI Creature Generator</title>
+    <link rel="stylesheet" href="style.css?v=8">
+</head>
+<body>
+    <div class="container">
+        <h1>AI Creature Generator</h1>
+        <form id="prompt-form">
+            <p class="prompt-text" contenteditable="true">
+                A cute
+                <select id="animal-select"></select>
+                against a solid fill background. Its body is
+                <select id="color-select"></select>
+                -colored, with an expression and stance conveying a
+                <select id="personality-select"></select>
+                personality.
+            </p>
+            <button type="submit" id="generate-button">Generate creature!</button>
+        </form>
+        <div class="image-container">
+            <div class="main-image">
+                <div id="loader" class="loader" style="display: none;"></div>
+                <img id="generated-image" src="" alt="Generated Image">
+            </div>
+            <div class="history-images">
+                <!-- Thumbnails will be added here -->
+                <div class="thumbnail placeholder"></div>
+                <div class="thumbnail placeholder"></div>
+                <div class="thumbnail placeholder"></div>
+                <div class="thumbnail placeholder"></div>
             </div>
         </div>
-        <script src="script.js?v=2"></script>
-    </body>
+    </div>
+    <script src="script.js?v=8"></script>
+</body>
 </html>
