@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <title>AI Creature Generator</title>
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="style.css?v=1">
     </head>
     <body>
         <div class="container">
@@ -18,16 +18,18 @@
                     <select id="personality-select"></select>
                     personality.
                 </p>
-                <button type="submit">Generate Image</button>
+                <button type="submit">Generate creature!</button>
             </form>
             <div class="image-container">
-                <img id="generated-image" src="" alt="Generated Image">
-                <div class="history">
-                    <h2>History</h2>
-                    <div id="history-images"></div>
+                <div class="main-image">
+                    <div id="loader" class="loader" style="display: none;"></div>
+                    <img id="generated-image" src="" alt="Generated Image">
+                </div>
+                <div class="history-images">
+                    <!-- Thumbnails will be added here -->
                 </div>
             </div>
         </div>
-        <script src="script.js?v=1"></script>
+        <script src="script.js?v=2"></script>
     </body>
 </html>
