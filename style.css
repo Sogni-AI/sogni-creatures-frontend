@@ -78,11 +78,17 @@ select:focus {
     outline: none;
 }
 
+/* Button Container */
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+/* Button styles */
 button {
-    display: block;
     padding: 12px 30px;
     font-size: 1.1em;
-    margin: 0 auto;
     background-color: #007aff;
     color: #ffffff;
     border: none;
@@ -104,6 +110,15 @@ button:active {
 button:disabled {
     cursor: not-allowed;
     background-color: #d1d1d6;
+}
+
+/* Specific style for Random button (optional) */
+#random-button {
+    background-color: #34c759; /* Green color */
+}
+
+#random-button:hover {
+    background-color: #28a745;
 }
 
 /* Image container styles */
@@ -284,6 +299,12 @@ button:disabled {
         width: 40px;
         height: 40px;
         border-width: 6px;
+    }
+
+    /* Button Container Responsive */
+    .button-container {
+        flex-direction: column;
+        gap: 10px;
     }
 }
 

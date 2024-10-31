@@ -4,7 +4,48 @@
     <meta charset="UTF-8">
     <title>AI Creature Generator</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Ensures responsiveness -->
-    <link rel="stylesheet" href="style.css?v=30"> <!-- Link to your CSS file -->
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Generate unique and adorable AI-powered creatures with our intuitive AI Creature Generator. Customize animals, colors, and personalities to create your perfect mythical companion.">
+    <meta name="keywords" content="AI Creature Generator, Generate Creatures, AI Art, Custom Animals, Mythical Creatures, Digital Art, AI Art Generator">
+    <meta name="author" content="Your Company Name">
+
+    <!-- Open Graph Meta Tags for Facebook -->
+    <meta property="og:title" content="AI Creature Generator">
+    <meta property="og:description" content="Create unique and adorable AI-powered creatures by customizing animals, colors, and personalities. Perfect for inspiring your next creative project!">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://creatures.sogni.ai/">
+    <meta property="og:image" content="https://creatures.sogni.ai/logo.png">
+    <meta property="og:image:width" content="1024">
+    <meta property="og:image:height" content="1024">
+    <meta property="og:site_name" content="AI Creature Generator">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="AI Creature Generator">
+    <meta name="twitter:description" content="Create unique and adorable AI-powered creatures by customizing animals, colors, and personalities. Perfect for inspiring your next creative project!">
+    <meta name="twitter:image" content="https://cdn.prod.website-files.com/6630875599550e7ce589dac0/670cf0f34e0a5a67b3dcd21c_SogniMeta.jpg">
+    <meta name="twitter:site" content="@getsogni">
+    <meta name="twitter:creator" content="@getsogni">
+
+    <!-- Structured Data (Schema.org) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "AI Creature Generator",
+      "description": "Generate unique and adorable AI-powered creatures by customizing animals, colors, and personalities.",
+      "url": "https://creatures.sogni.ai/",
+      "applicationCategory": "Art & Design",
+      "operatingSystem": "All",
+      "browserRequirements": "Requires JavaScript"
+    }
+    </script>
+
+    <!-- Favicon (Optional) -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="style.css?v=36"> <!-- Link to your CSS file -->
 </head>
 <body>
     <!-- iOS Navigation Bar (for mobile aesthetics) -->
@@ -25,7 +66,11 @@
                 <select id="personality-select"></select>
                 personality.
             </p>
-            <button type="submit" id="generate-button">Generate Creature!</button>
+            <!-- Button Container -->
+            <div class="button-container">
+                <button type="submit" id="generate-button">Generate Creature!</button>
+                <button type="button" id="random-button">Random!</button>
+            </div>
         </form>
 
         <!-- Image Container -->
@@ -49,6 +94,6 @@
     </div>
 
     <!-- Link to your JavaScript file -->
-    <script src="script.js?v=32"></script>
+    <script src="script.js?v=36"></script>
 </body>
 </html>

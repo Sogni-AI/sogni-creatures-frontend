@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const historyImagesContainer = document.querySelector('.history-images');
   const loader = document.getElementById('loader');
   const generateButton = document.getElementById('generate-button');
+  const randomButton = document.getElementById('random-button'); // New button
 
   // Populate dropdowns
   populateDropdown(animalSelect, animals);
@@ -43,6 +44,11 @@ document.addEventListener('DOMContentLoaded', () => {
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     await generateCreature();
+  });
+
+  // Event listener for Random button
+  randomButton.addEventListener('click', async () => {
+    await handleRandomButtonClick();
   });
 
   // Function Definitions
@@ -78,8 +84,8 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   async function generateCreature() {
-    // Disable the button and indicate loading
-    setGenerateButtonState(true, 'Generating...');
+    // Disable the buttons and indicate loading
+    setButtonsState(true, 'Generating...');
 
     // Save current image to history if it's a fresh generation
     if (generatedImage.src && generatedImage.dataset.fromHistory === 'false') {
@@ -92,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
       personality: personalitySelect.value
     };
 
-    const prompt = `A cute ${promptDetails.animal} against a solid fill background. Its body is ${promptDetails.color}-colored, with an expression and stance conveying a ${promptDetails.personality} personality.`;
+    const prompt = `A cute ${promptDetails.animal} against a solid fill background. Its body is ((${promptDetails.color})) colored, with an expression and stance conveying a ${promptDetails.personality} personality.`;
 
     // Show loader and hide image
     loader.style.display = 'block';
@@ -116,11 +122,12 @@ document.addEventListener('DOMContentLoaded', () => {
         loader.style.display = 'none';
         generatedImage.style.display = 'block';
 
-        // Re-enable the button
-        setGenerateButtonState(false, 'Generate Creature!');
-
-        // Randomize prompt for next generation
-        randomizePromptMultipleTimes(3, 500, updateMainImageBackground);
+        // Re-enable the buttons
+        setButtonsState(false, 'Generate Creature!');
+        
+        // Randomize prompt for next generation if needed
+        // randomizePromptMultipleTimes(3, 500, updateMainImageBackground);
+        // Removed to keep random routine active
       };
 
       // Remove any existing onload handler to prevent conflicts
@@ -132,15 +139,32 @@ document.addEventListener('DOMContentLoaded', () => {
     } catch (error) {
       console.error('Error:', error);
       loader.style.display = 'none';
-      setGenerateButtonState(false, 'Generate Creature!');
+      setButtonsState(false, 'Generate Creature!');
     }
   }
 
-  function setGenerateButtonState(disabled, text) {
+  function setButtonsState(disabled, generateButtonText) {
     generateButton.disabled = disabled;
-    generateButton.textContent = text;
+    randomButton.disabled = disabled;
+    generateButton.textContent = generateButtonText;
     generateButton.style.backgroundColor = disabled ? '#6c757d' : '#007aff';
+    randomButton.style.backgroundColor = disabled ? '#6c757d' : '#34c759'; // Maintain color for random button
     generateButton.style.cursor = disabled ? 'not-allowed' : 'pointer';
+    randomButton.style.cursor = disabled ? 'not-allowed' : 'pointer';
+  }
+
+  async function handleRandomButtonClick() {
+    // Disable the buttons and indicate loading
+    setButtonsState(true, 'Generating...');
+
+    // Randomize selections
+    randomizeSelection(animalSelect);
+    randomizeSelection(colorSelect);
+    randomizeSelection(personalitySelect);
+    updateMainImageBackground();
+
+    // Proceed to generate creature
+    await generateCreature();
   }
 
   function addToHistory(imageSrc, prompt) {
