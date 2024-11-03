@@ -25,15 +25,15 @@ document.addEventListener('DOMContentLoaded', () => {
   const historyImagesContainer = document.querySelector('.history-images');
   const loader = document.getElementById('loader');
   const generateButton = document.getElementById('generate-button');
-  const randomButton = document.getElementById('random-button'); // New button
+  const randomButton = document.getElementById('random-button');
 
-  // Populate dropdowns
-  populateDropdown(animalSelect, animals);
-  populateDropdown(colorSelect, colors);
-  populateDropdown(personalitySelect, personalities);
+  // Populate dropdowns with default selections
+  populateDropdown(animalSelect, animals, 'tiger');
+  populateDropdown(colorSelect, colors, 'pink');
+  populateDropdown(personalitySelect, personalities, 'loyal');
 
-  // Initial randomization effect on page load
-  randomizePromptMultipleTimes(3, 500, updateMainImageBackground);
+  // Update background color based on default selections
+  updateMainImageBackground();
 
   // Assign random muted colors to placeholders
   assignRandomColorsToPlaceholders();
@@ -51,14 +51,21 @@ document.addEventListener('DOMContentLoaded', () => {
     await handleRandomButtonClick();
   });
 
-  // Function Definitions
+  // Function to scroll to the bottom of the history container
+  function scrollToBottom() {
+    historyImagesContainer.scrollTop = historyImagesContainer.scrollHeight;
+  }
 
-  function populateDropdown(selectElement, options) {
+  // Function to populate dropdowns
+  function populateDropdown(selectElement, options, defaultOption) {
     selectElement.innerHTML = ''; // Clear existing options
     options.forEach(option => {
       const opt = document.createElement('option');
       opt.value = option;
       opt.textContent = capitalize(option);
+      if (option === defaultOption) {
+        opt.selected = true; // Set default selection
+      }
       selectElement.appendChild(opt);
     });
   }
@@ -124,14 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Re-enable the buttons
         setButtonsState(false, 'Generate Creature!');
-        
-        // Randomize prompt for next generation if needed
-        // randomizePromptMultipleTimes(3, 500, updateMainImageBackground);
-        // Removed to keep random routine active
       };
-
-      // Remove any existing onload handler to prevent conflicts
-      // Not necessary here since we overwrite it
 
       generatedImage.src = imageUrl;
       generatedImage.title = prompt;
@@ -157,14 +157,29 @@ document.addEventListener('DOMContentLoaded', () => {
     // Disable the buttons and indicate loading
     setButtonsState(true, 'Generating...');
 
-    // Randomize selections
-    randomizeSelection(animalSelect);
-    randomizeSelection(colorSelect);
-    randomizeSelection(personalitySelect);
-    updateMainImageBackground();
+    // Randomize selections with multiple prompts
+    await randomizePromptMultipleTimes(3, 500, updateMainImageBackground);
 
-    // Proceed to generate creature
+    // Proceed to generate creature based on the final prompt
     await generateCreature();
+  }
+
+  function randomizePromptMultipleTimes(times, delay, callback) {
+    return new Promise((resolve) => {
+      let count = 0;
+      const interval = setInterval(() => {
+        randomizeSelection(animalSelect);
+        randomizeSelection(colorSelect);
+        randomizeSelection(personalitySelect);
+        callback();
+
+        count++;
+        if (count >= times) {
+          clearInterval(interval);
+          resolve(); // Resolve the promise after final randomization
+        }
+      }, delay);
+    });
   }
 
   function addToHistory(imageSrc, prompt) {
@@ -189,6 +204,9 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
       historyImagesContainer.appendChild(img); // Append to bottom
     }
+
+    // Scroll to the bottom after adding the new thumbnail
+    scrollToBottom();
   }
 
   function isImageInHistory(imageSrc) {
@@ -235,9 +253,9 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function parseAndSetPrompt(prompt) {
-    // Example prompt: "A cute dog against a solid fill background. Its body is blue-colored, with an expression and stance conveying a loyal personality."
+    // Example prompt: "A cute dog against a solid fill background. ((blue)) body, with an expression and stance conveying a loyal personality."
     const animalMatch = prompt.match(/A cute (\w+) against/);
-    const colorMatch = prompt.match(/Its body is (\w+)-colored/);
+    const colorMatch = prompt.match(/\(\((\w+)\)\) body/);
     const personalityMatch = prompt.match(/conveying a (\w+) personality/);
 
     if (animalMatch && animalMatch[1]) {
@@ -258,20 +276,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
     }
-  }
-
-  function randomizePromptMultipleTimes(times, interval, callback) {
-    let count = 0;
-    const randomizeInterval = setInterval(() => {
-      randomizeSelection(animalSelect);
-      randomizeSelection(colorSelect);
-      randomizeSelection(personalitySelect);
-      count++;
-      if (count >= times) {
-        clearInterval(randomizeInterval);
-        if (callback) callback();
-      }
-    }, interval);
   }
 
   function getRandomMutedColor() {
