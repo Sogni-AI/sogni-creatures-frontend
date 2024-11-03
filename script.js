@@ -98,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
       personality: personalitySelect.value
     };
 
-    const prompt = `A cute ${promptDetails.animal} against a solid fill background. Its body is ((${promptDetails.color})) colored, with an expression and stance conveying a ${promptDetails.personality} personality.`;
+    const prompt = `A cute ${promptDetails.animal} against a solid fill background. ((${promptDetails.color})) body, with an expression and stance conveying a ${promptDetails.personality} personality.`;
 
     // Show loader and hide image
     loader.style.display = 'block';
