@@ -1,4 +1,11 @@
-const animals = ['bee', 'crocodile', 'dog', 'jellyfish', 'koala', 'panda', 'scorpion', 'tiger'];
+const animals = [
+  "ant", "bear", "bee", "butterfly", "caterpillar", "cat", "crab", "crocodile",
+  "deer", "dog", "dolphin", "dragon", "dragonfly", "eagle", "elephant", "fish",
+  "fox", "giraffe", "gorilla", "horse", "jellyfish", "kangaroo", "koala",
+  "ladybug", "lion", "lobster", "mantis", "monkey", "octopus", "owl", "panda",
+  "penguin", "rabbit", "scorpion", "seal", "seahorse", "shark", "shrimp",
+  "squid", "squirrel", "starfish", "spider", "tiger", "turtle", "whale", "zebra"
+];
 const colors = ['red', 'blue', 'green', 'yellow', 'purple', 'orange', 'pink', 'black', 'white', 'grey', 'brown'];
 const personalities = ['loyal', 'courageous', 'free-spirited', 'majestic', 'wise', 'energetic', 'curious', 'icy', 'fiery', 'psychic', 'degen', 'fairy', 'fighting', 'techno'];
 
