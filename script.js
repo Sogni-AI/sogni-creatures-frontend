@@ -195,7 +195,12 @@ document.addEventListener('DOMContentLoaded', () => {
       return; // Image already exists in history
     }
 
-    const placeholder = historyImagesContainer.querySelector('.thumbnail.placeholder');
+    // Remove a placeholder if it exists
+    const placeholder = historyImagesContainer.querySelector('.placeholder');
+    if (placeholder) {
+      historyImagesContainer.removeChild(placeholder);
+    }
+
     const img = document.createElement('img');
     img.src = imageSrc;
     img.title = prompt;
@@ -206,14 +211,15 @@ document.addEventListener('DOMContentLoaded', () => {
       handleHistoryThumbnailClick(img);
     });
 
-    if (placeholder) {
-      historyImagesContainer.replaceChild(img, placeholder);
-    } else {
-      historyImagesContainer.appendChild(img); // Append to bottom
-    }
+    // Prepend the new image to the history container
+    historyImagesContainer.insertBefore(img, historyImagesContainer.firstChild);
 
-    // Scroll to the bottom after adding the new thumbnail
-    scrollToBottom();
+    // Scroll to the top after adding the new thumbnail
+    scrollToTop();
+  }
+
+  function scrollToTop() {
+    historyImagesContainer.scrollTop = 0;
   }
 
   function isImageInHistory(imageSrc) {

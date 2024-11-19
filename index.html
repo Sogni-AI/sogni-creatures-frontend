@@ -47,31 +47,8 @@
     <link rel="stylesheet" href="style.css?v=36"> <!-- Link to your CSS file -->
 </head>
 <body>
-    <!-- iOS Navigation Bar (for mobile aesthetics) -->
-    <div class="ios-navbar">
-        <h1>AI Creature Generator</h1>
-    </div>
-
     <!-- Main Container -->
     <div class="container">
-        <!-- Prompt Form -->
-        <form id="prompt-form">
-            <p class="prompt-text">
-                A cute
-                <select id="animal-select"></select>
-                against a solid fill background. Its body is
-                <select id="color-select"></select>
-                -colored, with an expression and stance conveying a
-                <select id="personality-select"></select>
-                personality.
-            </p>
-            <!-- Button Container -->
-            <div class="button-container">
-                <button type="submit" id="generate-button">Generate Creature!</button>
-                <button type="button" id="random-button">Random!</button>
-            </div>
-        </form>
-
         <!-- Image Container -->
         <div class="image-container">
             <!-- Main Image Display -->
@@ -83,14 +60,57 @@
             <!-- History Thumbnails -->
             <div class="history-images">
                 <!-- Placeholder thumbnails for initial state -->
-                <div class="thumbnail placeholder"></div>
-                <div class="thumbnail placeholder"></div>
-                <div class="thumbnail placeholder"></div>
-                <div class="thumbnail placeholder"></div>
+                <div class="thumbnail placeholder">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zm-2 0H5V5h14v14zm-3-3l-2.5-3.2-1.5 1.9L9 13l-4 5h12z"/>
+                    </svg>
+                </div>
+                <div class="thumbnail placeholder">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zm-2 0H5V5h14v14zm-3-3l-2.5-3.2-1.5 1.9L9 13l-4 5h12z"/>
+                    </svg>
+                </div>
+                <div class="thumbnail placeholder">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zm-2 0H5V5h14v14zm-3-3l-2.5-3.2-1.5 1.9L9 13l-4 5h12z"/>
+                    </svg>
+                </div>
+                <div class="thumbnail placeholder">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zm-2 0H5V5h14v14zm-3-3l-2.5-3.2-1.5 1.9L9 13l-4 5h12z"/>
+                    </svg>
+                </div>
             </div>
         </div>
-
+        <form id="prompt-form">
+            <h1>Creature Creator</h1>
+            <p class="prompt-text">What cute creature would you like to create? ✨</p>
+            <div class="fields">
+                <div class="field-container">
+                    <p class="field-label">Animal</p>
+                    <select id="animal-select"></select>
+                </div>
+                <div class="field-container">
+                    <p class="field-label">Personality</p>
+                    <select id="personality-select"></select>
+                </div>
+                <div class="field-container">
+                    <p class="field-label">Background Color</p>
+                    <select id="color-select"></select>
+                </div>
+            </div>
+            <!-- Button Container -->
+            <div class="button-container">
+                <button type="submit" id="generate-button">Generate Creature!</button>
+                <button type="button" id="random-button">Random!</button>
+            </div>
+        </form>
     </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        Made with Sogni AI
+    </footer>
 
     <!-- Link to your JavaScript file -->
     <script src="script.js?v=45"></script>

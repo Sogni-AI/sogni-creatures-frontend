@@ -1,3 +1,6 @@
+/* Import Satoshi font */
+@import url('https://fonts.googleapis.com/css2?family=Satoshi:wght@400;500;700&display=swap');
+
 /* Reset styles */
 * {
     margin: 0;
@@ -7,23 +10,25 @@
 
 /* Body styles */
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    background: linear-gradient(to bottom, #f4f4f5, #e8eaec);
+    font-family: 'Satoshi', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background: #121214;
     color: #333;
-    min-height: 100vh;
     display: flex;
+    padding:0.5rem;
     flex-direction: column; /* Stack content vertically */
-    padding: 0; /* Remove default padding */
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; /* Ensure body takes full viewport height */
 }
 
 /* Container styles */
 .container {
-    flex: 1; /* Allow container to grow and fill available space */
-    max-width: 750px;
+    max-width: 1100px;
     width: 100%; /* Ensure full width */
     margin: 0 auto;
     padding: 30px;
-    background: #ffffff;
+    background: #1f1f22;
+    border: 1px solid #414148;
     border-radius: 20px;
     box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.3s;
@@ -33,39 +38,57 @@ body {
 
 /* Header styles */
 h1 {
-    text-align: center;
-    margin-bottom: 30px;
-    color: #1d1d1f;
+    text-align: left;
+    color: #e6e5e5;
     font-size: 2.5em;
     font-weight: 600;
 }
 
-/* Prompt form styles */
-#prompt-form {
-    background: #f9f9fb;
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    margin-bottom: 30px;
-    transition: background 0.3s;
+.history-title {
+    color:#d1d1d6;
+    font-size:1rem;
 }
 
-#prompt-form:hover {
-    background: #f1f1f3;
+
+/* Prompt form styles */
+#prompt-form {
+    padding: 20px;
+    border-radius: 15px;
+    transition: background 0.3s;
+    background-color: #2e2e33;
+    display: flex;
+    flex-direction: column; /* Stack children vertically */
+    justify-content: space-between; /* Distribute space between children */
+    height: 100%; /* Allow form to take full height */
 }
+
 
 .prompt-text {
     font-size: 1.2em;
-    margin-bottom: 15px;
+    margin-bottom: 2rem;
     line-height: 1.5;
-    color: #1d1d1f;
-    text-align: center;
+    color: #e6e5e5;
+    text-align: left;
 }
+
+.field-label {
+    font-family: 'Satoshi', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+    color: #e6e5e5;
+    text-align: left;
+}
+
+.field-container {
+    margin-bottom: 1rem;
+}
+
 
 select {
     font-size: 1em;
     padding: 8px 12px;
-    margin: 0 5px;
+    width:100%;
     border-radius: 12px;
     border: 1px solid #d1d1d6;
     background-color: #ffffff;
@@ -80,6 +103,7 @@ select:focus {
 
 /* Button Container */
 .button-container {
+    margin-top: auto; /* Push the button container to the bottom */
     display: flex;
     justify-content: center;
     gap: 15px;
@@ -87,8 +111,9 @@ select:focus {
 
 /* Button styles */
 button {
-    padding: 12px 30px;
+    padding: 1rem 30px;
     font-size: 1.1em;
+    width:100%;
     background-color: #007aff;
     color: #ffffff;
     border: none;
@@ -96,7 +121,7 @@ button {
     cursor: pointer;
     font-weight: 500;
     transition: background 0.3s, transform 0.1s;
-    box-shadow: 0 8px 16px rgba(0, 122, 255, 0.2);
+    font-family: 'Satoshi', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
 button:hover {
@@ -124,18 +149,17 @@ button:disabled {
 /* Image container styles */
 .image-container {
     flex: 1; /* Allow image container to grow and fill space */
-    display: flex;
     justify-content: center;
     align-items: center; /* Center content vertically */
     gap: 20px;
-    margin-bottom: 20px; /* Add spacing at the bottom */
 }
 
 .main-image {
     position: relative;
     width: 100%;
-    max-width: 500px;
-    height: 500px;
+    aspect-ratio: 1 / 1;
+    margin-left: auto;
+    margin-right: auto;
     background: #e5e5ea; /* Placeholder background color */
     border-radius: 20px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
@@ -172,18 +196,42 @@ button:disabled {
     100% { transform: rotate(360deg); }
 }
 
+/* Full-width History Container */
+.history-container {
+    max-width: 1100px; /* Match the container's max-width */
+    width: 100%; /* Full width of the viewport or parent */
+    margin: 0 auto; /* Center the container */
+    padding: 1rem; /* Optional padding */
+    width: 100%; /* Ensure full width */
+    margin: 0 auto;
+    padding: 30px;
+    background: #1f1f22;
+    border: 1px solid #414148;
+    border-radius: 20px;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s;
+    background-color: #1f1f22; /* Match the container background */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Optional shadow */
+    margin-top: 1rem; /* Space above the history container */
+}
+
 /* History Images styles */
 .history-images {
     display: flex;
-    flex-direction: column;
-    max-height: 500px;
-    overflow-y: auto;
-    scrollbar-width: thin;
-    scrollbar-color: #d1d1d6 transparent;
+    gap: 1rem;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start; /* Align items to the start */
+    width: 100%; /* Ensure full width of the container */
+    padding: 0; /* Remove any padding that might add space */
+    margin: 1rem 0 0 0; /* Add 1rem top margin */
+    overflow-x: auto; /* Enable horizontal scrolling */
+    scrollbar-width: thin; /* For Firefox */
+    scrollbar-color: #d1d1d6 transparent; /* For Firefox */
 }
 
 .history-images::-webkit-scrollbar {
-    width: 8px;
+    height: 8px; /* Horizontal scrollbar height */
 }
 
 .history-images::-webkit-scrollbar-track {
@@ -196,14 +244,23 @@ button:disabled {
 }
 
 .thumbnail {
-    width: 90px;
-    height: 90px;
+    flex: 1; /* Allow thumbnails to grow and fill available space */
+    max-width: calc(25% - 0.75rem); /* Adjust width to account for gaps */
+    aspect-ratio: 1 / 1; /* Maintain a square aspect ratio */
     background-color: #f1f1f3;
     border-radius: 12px;
-    margin-bottom: 12px;
     cursor: pointer;
     transition: transform 0.2s, box-shadow 0.2s;
     object-fit: cover; /* Ensure images cover the thumbnail area */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Ensure history images maintain 25% width minus the gap */
+.thumbnail[data-from-history="true"] {
+    width: calc(25% - 1rem); /* Ensure width is 25% minus the 1rem gap when loaded from history */
+    aspect-ratio: 1 / 1; /* Maintain a square aspect ratio */
 }
 
 .thumbnail:hover {
@@ -212,7 +269,13 @@ button:disabled {
 }
 
 .placeholder {
-    background-color: #e5e5ea;
+    background-color: #2e2e33 !important; /* Set placeholder background color */
+}
+
+.placeholder svg {
+    width: 1.5rem; /* Set SVG icon width */
+    height: 1.5rem; /* Set SVG icon height */
+    fill: white; /* Set SVG icon color */
 }
 
 /* Clear History Button Styles */
@@ -235,7 +298,7 @@ button:disabled {
 @media (max-width: 600px) {
     .container {
         padding: 20px;
-        border-radius: 0;
+        border-radius: 1rem;
         box-shadow: none;
         max-width: none;
     }
@@ -250,13 +313,15 @@ button:disabled {
 
     button {
         width: 100%;
-        border-radius: 0;
+        border-radius: 1rem;
     }
 
     .main-image {
         height: auto;
+        margin-left: auto;
+        margin-right: auto;
         aspect-ratio: 1; /* Maintain square aspect ratio */
-        border-radius: 0;
+        border-radius: 1rem;
         border: none;
         box-shadow: none;
     }
@@ -276,17 +341,11 @@ button:disabled {
         justify-content: center;
     }
 
-    .thumbnail, .placeholder {
-        width: 70px;
-        height: 70px;
-        border-radius: 10px;
-    }
-
     #prompt-form {
-        padding: 15px;
+        padding: 2rem 0 0 0; /* Add 2rem top padding, set other paddings to 0 */
+        background-color: transparent; /* Remove background color */
         border-radius: 0;
         box-shadow: none;
-        margin-bottom: 20px;
     }
 
     select {
@@ -310,10 +369,7 @@ button:disabled {
 
 /* iOS-specific styles */
 @media (max-width: 600px) and (orientation: portrait) {
-    body {
-        background-color: #f2f2f7;
-        padding-top: env(safe-area-inset-top);
-    }
+  
 
     /* Status bar padding */
     .container {
@@ -342,8 +398,46 @@ button:disabled {
         margin: 0;
     }
 
-    /* Adjust container to account for navbar */
-    .container {
-        margin-top: 44px;
+  
+}
+
+/* Responsive styles for large screens */
+@media (min-width: 1200px) {
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center; /* Center content vertically */
     }
+
+    .container {
+        margin-top: 0; /* Remove any top margin */
+    }
+
+    .container {
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* Two equal columns */
+        gap: 20px; /* Space between columns */
+    }
+
+    .prompt-form, .image-container {
+        grid-column: span 1; /* Each takes one column */
+    }
+}
+
+/* Responsive styles */
+@media (max-width: 1200px) {
+    #prompt-form {
+        padding: 2rem 0 0 0; /* Add 2rem top padding, remove other paddings */
+        background-color: transparent; /* Remove background color */
+    }
+}
+
+/* Footer styles */
+.footer {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.3); /* White text with 30% opacity */
+    margin-top: 1rem; /* Add some space above the footer */
+    font-family: 'Satoshi', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; /* Ensure consistent font */
+    font-size: 0.8rem; /* Set font size to 0.8rem */
+    padding-top: 2rem; /* Add 2rem padding to the top */
 }
