@@ -1,0 +1,25 @@
+# OS
+.DS_Store
+.DS_Store?
+._*
+Thumbs.db
+
+# Editors / agents
+.vscode/
+.idea/
+.cursor/
+.claude/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+npm-debug.log*
+
+# Env
+.env
+.env.local
+
+# Dependencies (in case anyone vendors them)
+node_modules/
